@@ -12,7 +12,7 @@ SCRIPT_PATH=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
 # Help information
 usage() {
     echo -e "Params:
--f - Path to remote log file
+-f - Path to remote file
 -l - Servers list
 "
     exit 1
@@ -48,10 +48,9 @@ function getServers() {
         ping -c1 -W1 -q $_server &>/dev/null
         status=$( echo $? )
         if [[ $status == 0 ]] ; then
-             echo "[✓] Success: ${_server} available"
+             echo "[✓] Success: ${_server} available."
         else
-             echo "[✗] Fail: ${_server} not available. Exit. Bye."
-             exit 1
+             echo "[✗] Fail: ${_server} not available."
         fi
 
     done
